@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Val's Balance Sheet Calculator</title>
+        <link rel="stylesheet" href="css/properties.css" />
+
+    </head>
+
+    <body>
+
+        <div id="header" class="header">Val's Example Balance Sheet Calculator</div>
+
+        <div id="content" class="grid">
+            <div class="grid-label"><h1>Assets</h1></div>
+            <div class="grid-label"><h1>Liability</h1></div>
+            <div class="grid-label"><h2>Current Assets</h2></div>
+            <div class="grid-label"><h2>Current Liabilities</h2></div>
+
+            <div class="grid-item" id="button"><button id="addAssetBtn" onclick="assetButtonClick()">Add Current Assets</button>
+                <div class="grid-item" id="inputContainer" style="display: none;">
+                    <label for="cash">Cash:</label>
+                    <input type="number" id="cash" class="asset" oninput="updateAssetSum()"> <br>
+                    <label for="inventory">Inventory:</label>
+                    <input type="number" id="inventory" class="asset" oninput="updateAssetSum()"><br>
+                    <label for="supplies">Supplies:</label>
+                    <input type="number" id="supplies" class="asset" oninput="updateAssetSum()"><br>
+                    <label for="temporaryInvestments">Temporary Investments:</label>
+                    <input type="number" id="temporaryInvestments" class="asset" oninput="updateAssetSum()"><br>
+                    <h2>Total Current Assets:  $<span id="totalAssets">0.00</span></h2>
+
+                </div></div>
+
+            <div class="grid-item" id="button"><button id="addLiabilityBtn" onclick="liabilityButtonClick()">Add Current Liabilities</button>
+                <div class="grid-item" id="inputLiabilityContainer" style="display: none;">
+                    <label for="accountsPayable">Accounts Payable:</label>
+                    <input type="number" id="accountsPayable" class="liability" oninput="updateLiabilitySum()"> <br>
+                    <label for="NotesPayable">Notes Payable:</label>
+                    <input type="number" id="notesPayable" class="liability" oninput="updateLiabilitySum()"><br>
+                    <label for="InterestPayable">Interest Payable:</label>
+                    <input type="number" id="interestPayable" class="liability" oninput="updateLiabilitySum()"><br>
+                    <label for="wagesPayable">Wages Payable:</label>
+                    <input type="number" id="wagesPayable" class="liability" oninput="updateLiabilitySum()"><br>
+                    <label for="AccruedExpenses">Accrued Expenses:</label>
+                    <input type="number" id="accruedExpenses" class="liability" oninput="updateLiabilitySum()"><br>
+                    <h2>Total Current Liabilities:  $<span id="totalLiabilities">0.00</span></h2>
+            </div></div>
+
+            <div class="grid-label"><h2>Investment Property and Equipment</h2></div>
+            <div class="grid-label"><h2>Longterm Liability</h2></div>
+
+            <div class="grid-item" id="button"><button id="addInvestmentBtn" onclick="investmentButtonClick()">Add Investment Properties and Equipment</button>
+                <div class="grid-item" id="inputInvestmentContainer" style="display: none;">
+                    <label for="land">Land:</label>
+                    <input type="number" id="land" class="asset" oninput="updateInvestmentSum()"> <br>
+                    <label for="buildingAndImprovements">Building and Improvements:</label>
+                    <input type="number" id="buildingAndImprovements" class="asset" oninput="updateInvestmentSum()"><br>
+                    <label for="equipment">Equipment:</label>
+                    <input type="number" id="equipment" class="asset" oninput="updateInvestmentSum()"><br>
+                    <label for="temporaryInvestments">Temporary Investments:</label>
+                    <input type="number" id="temporaryInvestments" class="asset" oninput="updateInvestmentSum()"><br>
+                    
+                    <h2>Total Investment Property and Equipment: $<span id="totalInvestment">0.00</span></h2>
+            </div></div>
+
+            <div class="grid-item" id="button"><button id="addLongTermBtn" onclick="longTermButtonClick()">Add Long-term Liability</button>
+                <div class="grid-item" id="inputLongTermContainer" style="display: none;">
+                    <label for="longTermNotesPayable">Notes Payables:</label>
+                    <input type="number" id="longTermNotesPayable" class="liability" oninput="updateLongTermSum()"> <br>
+                    <label for="bondsPayable">Bonds Payable:</label>
+                    <input type="number" id="bondsPayable" class="liability" oninput="updateLongTermSum()"><br>
+                    
+                    <h2>Total Long-term Liabilities: $<span id="totalLongTerm">0.00</span></h2>
+            </div></div>
+
+            <div class="grid-label"><h2>Intangibles</h2></div>
+            <div class="grid-label"><p>Total Position</p></div>
+
+            <div class="grid-item" id="button"><button id="addIntangibleBtn" onclick="intangibleButtonClick()">Add Intangibles</button>
+                <div class="grid-item" id="inputIntangibleContainer" style="display: none;">
+                    <label for="tradeNames">Trade Names:</label>
+                    <input type="number" id="tradeNames" class="asset" oninput="updateIntangibleSum()"> <br>
+                    <label for="goodWill">Good Will:</label>
+                    <input type="number" id="goodWill" class="asset" oninput="updateIntangibleSum()"><br>
+                    
+                    <h2>Total Intangibles: $<span id="totalIntangible">0.00</span></h2>
+            </div></div>
+
+            <div class="grid-label" id="button"><button id="calculatePositionBtn" onclick="positionButtonClick()">Calculate Position</button><p>
+                Total Assets : $<span id="completeAssets">0.00</span> <br> 
+                Total Liabilities : $<span id="completeLiabilities">0.00</span> <br>
+                Position : $<span id="totalPosition">0.00</span>
+            </p></div>
+
+            </div>
+            
+            <div class="grid-item"></div>
+           <!--- <div class="grid-label"><button id="calculatePositionBtn" onclick="positionButtonClick()">Calculate Position</button><p>
+                Total Assets : $<span id="totalCompleteAssets">0.00</span> <br> 
+                Total Liabilities : $<span id="totalCompleteLiabilites">0.00</span> <br>
+                Position : $<span id="totalPosition">0.00</span>
+            </p></div>--->
+        </div>
+
+        <div id="footer" class="footer">Bellarmine University 2024</div>
+
+
+        <script src="js/properties.js"></script>
+
+    </body>
+
+</html>
